@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		5EA97AF9B2E946B560724D05 /* Pods_SmackApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C11020BBCD1E1B7FB58B52D /* Pods_SmackApp.framework */; };
 		8C29ED9221EF6BE3002AEBF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29ED9121EF6BE3002AEBF0 /* AppDelegate.swift */; };
-		8C29ED9421EF6BE3002AEBF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29ED9321EF6BE3002AEBF0 /* ViewController.swift */; };
 		8C29ED9721EF6BE3002AEBF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C29ED9521EF6BE3002AEBF0 /* Main.storyboard */; };
 		8C29ED9921EF6BE4002AEBF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C29ED9821EF6BE4002AEBF0 /* Assets.xcassets */; };
 		8C29ED9C21EF6BE4002AEBF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C29ED9A21EF6BE4002AEBF0 /* LaunchScreen.storyboard */; };
 		8CFB14E421EF72FB00EFBBA5 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14E321EF72FB00EFBBA5 /* SWRevealViewController.m */; };
+		8CFB14EA21EF76BD00EFBBA5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14E921EF76BD00EFBBA5 /* ChatViewController.swift */; };
+		8CFB14EC21EF76D800EFBBA5 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14EB21EF76D800EFBBA5 /* ChannelViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +22,6 @@
 		7821EDAA3631A18083722266 /* Pods-SmackApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmackApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmackApp/Pods-SmackApp.release.xcconfig"; sourceTree = "<group>"; };
 		8C29ED8E21EF6BE3002AEBF0 /* SmackApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmackApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C29ED9121EF6BE3002AEBF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8C29ED9321EF6BE3002AEBF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8C29ED9621EF6BE3002AEBF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8C29ED9821EF6BE4002AEBF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C29ED9B21EF6BE4002AEBF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,6 +29,8 @@
 		8CFB14E121EF72FA00EFBBA5 /* SmackApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmackApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		8CFB14E221EF72FB00EFBBA5 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		8CFB14E321EF72FB00EFBBA5 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		8CFB14E921EF76BD00EFBBA5 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		8CFB14EB21EF76D800EFBBA5 /* ChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
 		9C11020BBCD1E1B7FB58B52D /* Pods_SmackApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmackApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -73,9 +75,12 @@
 		8C29ED9021EF6BE3002AEBF0 /* SmackApp */ = {
 			isa = PBXGroup;
 			children = (
+				8CFB14E821EF756E00EFBBA5 /* Utilities */,
+				8CFB14E721EF756000EFBBA5 /* Model */,
+				8CFB14E621EF755900EFBBA5 /* View */,
+				8CFB14E521EF754A00EFBBA5 /* Controller */,
 				8CFB14E021EF72E300EFBBA5 /* Supporting Files */,
 				8C29ED9121EF6BE3002AEBF0 /* AppDelegate.swift */,
-				8C29ED9321EF6BE3002AEBF0 /* ViewController.swift */,
 				8C29ED9521EF6BE3002AEBF0 /* Main.storyboard */,
 				8C29ED9821EF6BE4002AEBF0 /* Assets.xcassets */,
 				8C29ED9A21EF6BE4002AEBF0 /* LaunchScreen.storyboard */,
@@ -92,6 +97,36 @@
 				8CFB14E121EF72FA00EFBBA5 /* SmackApp-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8CFB14E521EF754A00EFBBA5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8CFB14E921EF76BD00EFBBA5 /* ChatViewController.swift */,
+				8CFB14EB21EF76D800EFBBA5 /* ChannelViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8CFB14E621EF755900EFBBA5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8CFB14E721EF756000EFBBA5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8CFB14E821EF756E00EFBBA5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		C16262FA00429D80002B776E /* Pods */ = {
@@ -222,8 +257,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C29ED9421EF6BE3002AEBF0 /* ViewController.swift in Sources */,
 				8C29ED9221EF6BE3002AEBF0 /* AppDelegate.swift in Sources */,
+				8CFB14EA21EF76BD00EFBBA5 /* ChatViewController.swift in Sources */,
+				8CFB14EC21EF76D800EFBBA5 /* ChannelViewController.swift in Sources */,
 				8CFB14E421EF72FB00EFBBA5 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
