@@ -16,6 +16,8 @@
 		8CFB14EA21EF76BD00EFBBA5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14E921EF76BD00EFBBA5 /* ChatViewController.swift */; };
 		8CFB14EC21EF76D800EFBBA5 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14EB21EF76D800EFBBA5 /* ChannelViewController.swift */; };
 		8CFB14EE21EFF3F600EFBBA5 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14ED21EFF3F600EFBBA5 /* GradientView.swift */; };
+		8CFB14F021F0040000EFBBA5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14EF21F0040000EFBBA5 /* Constants.swift */; };
+		8CFB14F221F0C1C200EFBBA5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14F121F0C1C200EFBBA5 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		8CFB14E921EF76BD00EFBBA5 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8CFB14EB21EF76D800EFBBA5 /* ChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
 		8CFB14ED21EFF3F600EFBBA5 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		8CFB14EF21F0040000EFBBA5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8CFB14F121F0C1C200EFBBA5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9C11020BBCD1E1B7FB58B52D /* Pods_SmackApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmackApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -106,6 +110,7 @@
 			children = (
 				8CFB14E921EF76BD00EFBBA5 /* ChatViewController.swift */,
 				8CFB14EB21EF76D800EFBBA5 /* ChannelViewController.swift */,
+				8CFB14F121F0C1C200EFBBA5 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 		8CFB14E821EF756E00EFBBA5 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				8CFB14EF21F0040000EFBBA5 /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -260,11 +266,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CFB14F221F0C1C200EFBBA5 /* LoginViewController.swift in Sources */,
 				8C29ED9221EF6BE3002AEBF0 /* AppDelegate.swift in Sources */,
 				8CFB14EA21EF76BD00EFBBA5 /* ChatViewController.swift in Sources */,
 				8CFB14EE21EFF3F600EFBBA5 /* GradientView.swift in Sources */,
 				8CFB14EC21EF76D800EFBBA5 /* ChannelViewController.swift in Sources */,
 				8CFB14E421EF72FB00EFBBA5 /* SWRevealViewController.m in Sources */,
+				8CFB14F021F0040000EFBBA5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
