@@ -12,6 +12,7 @@ class ChannelViewController: UIViewController {
 
     //MARK:- Outlets
     @IBOutlet weak var loginButton: UIButton!
+    @IBAction func prepareForUnwind(segue:UIStoryboardSegue){} //This ion is for the unwind from the "Create Account VC"
     
     
     

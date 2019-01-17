@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  CreateAccountViewController.swift
 //  SmackApp
 //
 //  Created by Daniel Garofalo on 1/17/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class CreateAccountViewController: UIViewController {
 
     //MARK:- Properties
     
@@ -20,7 +20,6 @@ class LoginViewController: UIViewController {
     
     //TableView Functions
     
-
     
     
     
@@ -34,17 +33,16 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
-    
 
-    //MARK:- Button
-    @IBAction func closeWhenPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    //MARK:- Buttons
+    
+    @IBAction func unwindWhenPressed(_ sender: UIButton) {
+        //to unwind all the way to Channel VC
+        performSegue(withIdentifier: UNWIND, sender: nil)
     }
     
-    @IBAction func createAccountWhenPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: GO_TO_CREATE_ACCOUNT, sender: nil)
-    }
+    
+    
     
     
 
