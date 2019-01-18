@@ -19,6 +19,7 @@
 		8CFB14F021F0040000EFBBA5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14EF21F0040000EFBBA5 /* Constants.swift */; };
 		8CFB14F221F0C1C200EFBBA5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14F121F0C1C200EFBBA5 /* LoginViewController.swift */; };
 		8CFB14F421F0C3B400EFBBA5 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14F321F0C3B400EFBBA5 /* CreateAccountViewController.swift */; };
+		8CFB14F721F14A5400EFBBA5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14F621F14A5400EFBBA5 /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		8CFB14EF21F0040000EFBBA5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8CFB14F121F0C1C200EFBBA5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8CFB14F321F0C3B400EFBBA5 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		8CFB14F621F14A5400EFBBA5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		9C11020BBCD1E1B7FB58B52D /* Pods_SmackApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmackApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 		8C29ED9021EF6BE3002AEBF0 /* SmackApp */ = {
 			isa = PBXGroup;
 			children = (
+				8CFB14F521F14A3A00EFBBA5 /* Services */,
 				8CFB14E821EF756E00EFBBA5 /* Utilities */,
 				8CFB14E721EF756000EFBBA5 /* Model */,
 				8CFB14E621EF755900EFBBA5 /* View */,
@@ -139,6 +142,14 @@
 				8CFB14EF21F0040000EFBBA5 /* Constants.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8CFB14F521F14A3A00EFBBA5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8CFB14F621F14A5400EFBBA5 /* AuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		C16262FA00429D80002B776E /* Pods */ = {
@@ -272,6 +283,7 @@
 				8CFB14F221F0C1C200EFBBA5 /* LoginViewController.swift in Sources */,
 				8C29ED9221EF6BE3002AEBF0 /* AppDelegate.swift in Sources */,
 				8CFB14EA21EF76BD00EFBBA5 /* ChatViewController.swift in Sources */,
+				8CFB14F721F14A5400EFBBA5 /* AuthService.swift in Sources */,
 				8CFB14EE21EFF3F600EFBBA5 /* GradientView.swift in Sources */,
 				8CFB14F421F0C3B400EFBBA5 /* CreateAccountViewController.swift in Sources */,
 				8CFB14EC21EF76D800EFBBA5 /* ChannelViewController.swift in Sources */,
