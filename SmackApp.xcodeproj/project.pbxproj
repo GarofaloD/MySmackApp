@@ -20,6 +20,7 @@
 		8CFB14F221F0C1C200EFBBA5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14F121F0C1C200EFBBA5 /* LoginViewController.swift */; };
 		8CFB14F421F0C3B400EFBBA5 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14F321F0C3B400EFBBA5 /* CreateAccountViewController.swift */; };
 		8CFB14F721F14A5400EFBBA5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14F621F14A5400EFBBA5 /* AuthService.swift */; };
+		8CFB14F921F219B200EFBBA5 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14F821F219B200EFBBA5 /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		8CFB14F121F0C1C200EFBBA5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8CFB14F321F0C3B400EFBBA5 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		8CFB14F621F14A5400EFBBA5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		8CFB14F821F219B200EFBBA5 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		9C11020BBCD1E1B7FB58B52D /* Pods_SmackApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmackApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				8CFB14ED21EFF3F600EFBBA5 /* GradientView.swift */,
+				8CFB14F821F219B200EFBBA5 /* RoundedButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CFB14F221F0C1C200EFBBA5 /* LoginViewController.swift in Sources */,
+				8CFB14F921F219B200EFBBA5 /* RoundedButton.swift in Sources */,
 				8C29ED9221EF6BE3002AEBF0 /* AppDelegate.swift in Sources */,
 				8CFB14EA21EF76BD00EFBBA5 /* ChatViewController.swift in Sources */,
 				8CFB14F721F14A5400EFBBA5 /* AuthService.swift in Sources */,

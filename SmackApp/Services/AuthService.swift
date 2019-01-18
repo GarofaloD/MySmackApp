@@ -65,18 +65,17 @@ class AuthService {
             "password": password
         ]
         
-        Alamofire.request(URL_REGISTER, method: .get, parameters: body, encoding: JSONEncoding.default, headers: header).responseString { (response) in
+        //POST request
+        Alamofire.request(URL_REGISTER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header).responseString { (response) in
             
             if response.result.error == nil {
                 
-                
-                
-                
-                
+                print("request sent")
                 completion(true)
             } else {
                 
                 completion(false)
+                print("Error on the request")
                 debugPrint(response.result.error as Any)
             }
         }
