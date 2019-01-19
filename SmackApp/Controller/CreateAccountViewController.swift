@@ -41,33 +41,39 @@ class CreateAccountViewController: UIViewController {
     
 
     //MARK:- Buttons
-    
+    //to unwind all the way to Channel VC
     @IBAction func unwindWhenPressed(_ sender: UIButton) {
-        //to unwind all the way to Channel VC
+        //with connection with "prepareForUnwind" on the ChannelVC
         performSegue(withIdentifier: UNWIND, sender: nil)
     }
     
+    
     @IBAction func createAccountWhenPressed(_ sender: UIButton) {
+         //User registration takes 3 steps: registration, logging and creation. All individual calls are coded on AuthService
         
         guard let email = emailTxt.text, emailTxt.text != "" else {return}
         guard let password = passwordTxt.text, passwordTxt.text != "" else {return}
         
-        
+        //Part1. Register the user
         AuthService.instance.registerUser(email: email, password: password) { (success) in
-            
             if success {
-                
-                print("Registered user!")
+                //Part2. Log in the user
+                print("User Reg complete")
+                AuthService.instance.loginUser(email: email, password: password, completion: { (success) in
+                    if success {
+                        
+                        print("User log complete", AuthService.instance.authToken)
+                    } else {
+                        print("Issues with log in")
+                    }
+                })
             } else {
-                
                 print("Issues with registration")
             }
-            
-            
         }
-        
-        
     }
+    
+    
     
     @IBAction func chooseAvatarWhenPressed(_ sender: UIButton) {
     }

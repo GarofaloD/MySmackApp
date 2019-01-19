@@ -14,6 +14,8 @@ typealias CompletionHandler = (_ Success: Bool) -> () //Closure to determine if 
 //URLS
 let BASE_URL = "https://smackappdaniel.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)/account/register"
+let URL_LOGIN = "\(BASE_URL)/account/login"
+let URL_ADD_USER = "\(BASE_URL)/user/add"
 
 
 
@@ -28,4 +30,9 @@ let TOKEN_KEY = "token"
 let LOGGED_IN_KEY = "loggedIn"
 let USER_EMAIL = "userEmail"
 
+
+//Additional inputs for requests
+let HEADER = [
+    "Content-Type": "application/json; charset=utf-8"
+]
 

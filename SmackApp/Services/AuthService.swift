@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class AuthService {
     
@@ -69,24 +70,50 @@ class AuthService {
         Alamofire.request(URL_REGISTER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header).responseString { (response) in
             
             if response.result.error == nil {
-                
                 print("request sent")
                 completion(true)
             } else {
-                
                 completion(false)
                 print("Error on the request")
                 debugPrint(response.result.error as Any)
             }
         }
+    }
+    
+    
+    //2.Login User
+    func loginUser(email: String, password: String, completion: @escaping CompletionHandler){
         
+        let lowercasedEmail = email.lowercased()
+        
+        let body: [String: Any] = [
+            "email": lowercasedEmail,
+            "password": password
+        ]
+        
+        //POST request
+        Alamofire.request(URL_LOGIN, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON { (response) in
+            
+            if response.result.error == nil {
+                
+                guard let data = response.data else { return }
+                let json = JSON(data: data)
+                
+                self.userEmail = json["user"].stringValue
+                self.authToken = json["token"].stringValue
+                self.isLoggedIn = true
+                
+                completion(true)
+            } else {
+                completion(false)
+                debugPrint(response.result.error as Any)
+            }
+        }
     }
     
     
     
-    //2.Login User
-    
-    //3.Add user
+    //3.Create user
     
     
     
