@@ -22,18 +22,27 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var userImg: UIImageView!
     
     
-    
-    
-    //MARK:- Custom functions
-    
-    //TableView Functions
-
     //MARK:- Load up functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //Reloading avatar from saved value on Userdata service
+        if UserDataService.instance.avatarName != ""{
+            userImg.image = UIImage(named: UserDataService.instance.avatarName)
+            avatarName = UserDataService.instance.avatarName
+        }
+    }
+    
+    //MARK:- Custom functions
+    
+    //TableView Functions
+    
+    
+    
     
 
     //MARK:- Buttons
@@ -78,7 +87,7 @@ class CreateAccountViewController: UIViewController {
     }
     
     
-    
+    //Go to Avatar Selection
     @IBAction func chooseAvatarWhenPressed(_ sender: UIButton) {
         performSegue(withIdentifier: GO_TO_AVATAR_PICKER, sender: nil)
     }
