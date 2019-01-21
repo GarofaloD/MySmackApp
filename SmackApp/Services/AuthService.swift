@@ -99,6 +99,7 @@ class AuthService {
                 guard let data = response.data else { return }
                 let json = JSON(data: data)
                 
+                //Saving response from API to UserDefaults properties
                 self.userEmail = json["user"].stringValue
                 self.authToken = json["token"].stringValue
                 self.isLoggedIn = true
@@ -114,6 +115,48 @@ class AuthService {
     
     
     //3.Create user
+    func createUser(name: String, email: String, avatarName: String, avatarColor: String, completion: @escaping CompletionHandler){
+        
+        let lowercasedEmail = email.lowercased()
+        
+        let body: [String: Any] = [
+            "email": lowercasedEmail,
+            "name": name,
+            "avatarName": avatarName,
+            "avatarColor": avatarColor
+        ]
+        
+        let header = [
+            "Authorization": "Bearer \(AuthService.instance.authToken)",
+            "Content-Type": "application/json; charset=utf-8"
+        ]
+        
+        //POST request
+        Alamofire.request(URL_ADD_USER, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+            
+            if response.result.error == nil {
+                
+                guard let data = response.data else {return}
+                let json = JSON(data: data)
+                
+                let idFromJson = json["_id"].stringValue
+                let nameFromJson = json["name"].stringValue
+                let emailFromJson = json["email"].stringValue
+                let colorFromJson = json["avatarColor"].stringValue
+                let avatarFromJson = json["avatarName"].stringValue
+                
+                //Storing user data
+                UserDataService.instance.setUserData(id: idFromJson, color: colorFromJson, avatarName: avatarFromJson, email: emailFromJson, name: nameFromJson)
+            
+                completion(true)
+            } else {
+                
+                completion(false)
+                debugPrint(response.result.error as Any)
+            }
+        }
+    }
+    
     
     
     

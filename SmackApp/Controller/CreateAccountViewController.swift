@@ -11,6 +11,8 @@ import UIKit
 class CreateAccountViewController: UIViewController {
 
     //MARK:- Properties
+    var avatarColor = "[0.5,0.5,0.5,1]" //RGBA representation
+    var avatarName = "profileDefault"
     
     
     //MARK:- Outlets
@@ -25,13 +27,7 @@ class CreateAccountViewController: UIViewController {
     //MARK:- Custom functions
     
     //TableView Functions
-    
-    
-    
-    
-    
-    
-    
+
     //MARK:- Load up functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +43,13 @@ class CreateAccountViewController: UIViewController {
         performSegue(withIdentifier: UNWIND, sender: nil)
     }
     
-    
+    //Account creation
     @IBAction func createAccountWhenPressed(_ sender: UIButton) {
          //User registration takes 3 steps: registration, logging and creation. All individual calls are coded on AuthService
         
         guard let email = emailTxt.text, emailTxt.text != "" else {return}
         guard let password = passwordTxt.text, passwordTxt.text != "" else {return}
+        guard let name = usernameTxt.text, usernameTxt.text != "" else { return }
         
         //Part1. Register the user
         AuthService.instance.registerUser(email: email, password: password) { (success) in
@@ -61,8 +58,15 @@ class CreateAccountViewController: UIViewController {
                 print("User Reg complete")
                 AuthService.instance.loginUser(email: email, password: password, completion: { (success) in
                     if success {
-                        
+                        //Part3. Create The user
                         print("User log complete", AuthService.instance.authToken)
+                        AuthService.instance.createUser(name: name, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success) in
+                            if success {
+                                //Dismiss and send us to the ChannelVC
+                                print("User successfully created. User: \(UserDataService.instance.name), Email: \(UserDataService.instance.email) ")
+                                self.performSegue(withIdentifier: UNWIND, sender: nil)
+                            }
+                        })
                     } else {
                         print("Issues with log in")
                     }
@@ -76,6 +80,7 @@ class CreateAccountViewController: UIViewController {
     
     
     @IBAction func chooseAvatarWhenPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: GO_TO_AVATAR_PICKER, sender: nil)
     }
     
     @IBAction func generateBckColorWhenPressed(_ sender: UIButton) {

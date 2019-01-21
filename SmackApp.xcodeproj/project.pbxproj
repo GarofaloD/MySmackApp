@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5EA97AF9B2E946B560724D05 /* Pods_SmackApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C11020BBCD1E1B7FB58B52D /* Pods_SmackApp.framework */; };
+		8C07031521F4EF13004C4938 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C07031421F4EF13004C4938 /* UserDataService.swift */; };
+		8C07031721F607E7004C4938 /* AvatarPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C07031621F607E7004C4938 /* AvatarPickerViewController.swift */; };
+		8C07031921F60E26004C4938 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C07031821F60E26004C4938 /* AvatarCell.swift */; };
 		8C29ED9221EF6BE3002AEBF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C29ED9121EF6BE3002AEBF0 /* AppDelegate.swift */; };
 		8C29ED9721EF6BE3002AEBF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C29ED9521EF6BE3002AEBF0 /* Main.storyboard */; };
 		8C29ED9921EF6BE4002AEBF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C29ED9821EF6BE4002AEBF0 /* Assets.xcassets */; };
@@ -26,6 +29,9 @@
 /* Begin PBXFileReference section */
 		004CEB50AC18449EF25E3947 /* Pods-SmackApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmackApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmackApp/Pods-SmackApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7821EDAA3631A18083722266 /* Pods-SmackApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmackApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmackApp/Pods-SmackApp.release.xcconfig"; sourceTree = "<group>"; };
+		8C07031421F4EF13004C4938 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
+		8C07031621F607E7004C4938 /* AvatarPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPickerViewController.swift; sourceTree = "<group>"; };
+		8C07031821F60E26004C4938 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 		8C29ED8E21EF6BE3002AEBF0 /* SmackApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmackApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C29ED9121EF6BE3002AEBF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C29ED9621EF6BE3002AEBF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 				8CFB14EB21EF76D800EFBBA5 /* ChannelViewController.swift */,
 				8CFB14F121F0C1C200EFBBA5 /* LoginViewController.swift */,
 				8CFB14F321F0C3B400EFBBA5 /* CreateAccountViewController.swift */,
+				8C07031621F607E7004C4938 /* AvatarPickerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -128,6 +135,7 @@
 			children = (
 				8CFB14ED21EFF3F600EFBBA5 /* GradientView.swift */,
 				8CFB14F821F219B200EFBBA5 /* RoundedButton.swift */,
+				8C07031821F60E26004C4938 /* AvatarCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -151,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				8CFB14F621F14A5400EFBBA5 /* AuthService.swift */,
+				8C07031421F4EF13004C4938 /* UserDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -286,10 +295,13 @@
 				8CFB14F221F0C1C200EFBBA5 /* LoginViewController.swift in Sources */,
 				8CFB14F921F219B200EFBBA5 /* RoundedButton.swift in Sources */,
 				8C29ED9221EF6BE3002AEBF0 /* AppDelegate.swift in Sources */,
+				8C07031521F4EF13004C4938 /* UserDataService.swift in Sources */,
 				8CFB14EA21EF76BD00EFBBA5 /* ChatViewController.swift in Sources */,
 				8CFB14F721F14A5400EFBBA5 /* AuthService.swift in Sources */,
+				8C07031721F607E7004C4938 /* AvatarPickerViewController.swift in Sources */,
 				8CFB14EE21EFF3F600EFBBA5 /* GradientView.swift in Sources */,
 				8CFB14F421F0C3B400EFBBA5 /* CreateAccountViewController.swift in Sources */,
+				8C07031921F60E26004C4938 /* AvatarCell.swift in Sources */,
 				8CFB14EC21EF76D800EFBBA5 /* ChannelViewController.swift in Sources */,
 				8CFB14E421EF72FB00EFBBA5 /* SWRevealViewController.m in Sources */,
 				8CFB14F021F0040000EFBBA5 /* Constants.swift in Sources */,
