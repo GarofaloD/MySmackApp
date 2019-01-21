@@ -115,6 +115,7 @@ class CreateAccountViewController: UIViewController {
         
         //Integration of the colors and application to the image with animation
         bgColor = UIColor(red: r, green: g, blue: b, alpha: 1)
+        avatarColor = "[\(r),\(g),\(b),1]"
         UIView.animate(withDuration: 0.2) {
             self.userImg.backgroundColor = self.bgColor
         }
