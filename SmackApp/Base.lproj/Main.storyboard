@@ -63,7 +63,7 @@
                                 <rect key="frame" x="312" y="107" width="22" height="22"/>
                                 <state key="normal" image="addChannelButton"/>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Xvj-sf-Om9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Xvj-sf-Om9" customClass="CircleImage" customModule="SmackApp" customModuleProvider="target">
                                 <rect key="frame" x="20" y="787" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="9tC-Mv-Jj5"/>
@@ -354,7 +354,7 @@
                                 <color key="textColor" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="fcO-gt-fDI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="fcO-gt-fDI" customClass="CircleImage" customModule="SmackApp" customModuleProvider="target">
                                 <rect key="frame" x="157" y="368.66666666666669" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="3H1-DI-q0F"/>
@@ -382,14 +382,20 @@
                                     <action selector="generateBckColorWhenPressed:" destination="kFG-6g-rc8" eventType="touchUpInside" id="ZFL-0c-Fma"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HoT-Of-cb6">
+                                <rect key="frame" x="188.66666666666666" y="329.66666666666669" width="37" height="37"/>
+                                <color key="color" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="AXV-cx-uq6" firstAttribute="centerX" secondItem="Jgw-zt-z88" secondAttribute="centerX" id="08I-Vo-oOy"/>
                             <constraint firstItem="6qt-fj-Mfg" firstAttribute="top" secondItem="vjL-QG-6hf" secondAttribute="bottom" constant="60" id="2du-By-Zjl"/>
                             <constraint firstItem="vjL-QG-6hf" firstAttribute="centerX" secondItem="Jgw-zt-z88" secondAttribute="centerX" id="8E3-qz-KFO"/>
+                            <constraint firstItem="HoT-Of-cb6" firstAttribute="centerX" secondItem="Jgw-zt-z88" secondAttribute="centerX" id="8gf-dB-B34"/>
                             <constraint firstItem="fcO-gt-fDI" firstAttribute="top" secondItem="6qt-fj-Mfg" secondAttribute="bottom" constant="46" id="8gm-m7-GRw"/>
                             <constraint firstItem="X5A-t3-dKg" firstAttribute="trailing" secondItem="5TQ-wT-QAU" secondAttribute="trailing" constant="20" id="JHM-Dr-Z4a"/>
+                            <constraint firstItem="HoT-Of-cb6" firstAttribute="centerY" secondItem="Jgw-zt-z88" secondAttribute="centerY" constant="-100" id="Kz1-C6-iJg"/>
                             <constraint firstItem="fQb-lG-HyF" firstAttribute="centerX" secondItem="Jgw-zt-z88" secondAttribute="centerX" id="LXP-cL-0UC"/>
                             <constraint firstItem="5TQ-wT-QAU" firstAttribute="top" secondItem="X5A-t3-dKg" secondAttribute="top" id="NBd-aG-Dn7"/>
                             <constraint firstItem="fcO-gt-fDI" firstAttribute="centerX" secondItem="Jgw-zt-z88" secondAttribute="centerX" id="OxZ-sv-U00"/>
@@ -405,6 +411,7 @@
                         <viewLayoutGuide key="safeArea" id="X5A-t3-dKg"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="HoT-Of-cb6" id="kEc-A2-Ski"/>
                         <outlet property="emailTxt" destination="NkJ-tb-sg1" id="Of8-SC-ipi"/>
                         <outlet property="passwordTxt" destination="Pw8-Ul-sW0" id="r7a-Ki-TWB"/>
                         <outlet property="userImg" destination="fcO-gt-fDI" id="spi-kP-z8u"/>

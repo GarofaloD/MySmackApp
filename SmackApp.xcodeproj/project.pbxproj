@@ -15,6 +15,7 @@
 		8C29ED9721EF6BE3002AEBF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C29ED9521EF6BE3002AEBF0 /* Main.storyboard */; };
 		8C29ED9921EF6BE4002AEBF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C29ED9821EF6BE4002AEBF0 /* Assets.xcassets */; };
 		8C29ED9C21EF6BE4002AEBF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C29ED9A21EF6BE4002AEBF0 /* LaunchScreen.storyboard */; };
+		8C543E3721F66B860017E474 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C543E3621F66B860017E474 /* CircleImage.swift */; };
 		8CFB14E421EF72FB00EFBBA5 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14E321EF72FB00EFBBA5 /* SWRevealViewController.m */; };
 		8CFB14EA21EF76BD00EFBBA5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14E921EF76BD00EFBBA5 /* ChatViewController.swift */; };
 		8CFB14EC21EF76D800EFBBA5 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14EB21EF76D800EFBBA5 /* ChannelViewController.swift */; };
@@ -38,6 +39,7 @@
 		8C29ED9821EF6BE4002AEBF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C29ED9B21EF6BE4002AEBF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C29ED9D21EF6BE4002AEBF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C543E3621F66B860017E474 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		8CFB14E121EF72FA00EFBBA5 /* SmackApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmackApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		8CFB14E221EF72FB00EFBBA5 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		8CFB14E321EF72FB00EFBBA5 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				8CFB14ED21EFF3F600EFBBA5 /* GradientView.swift */,
 				8CFB14F821F219B200EFBBA5 /* RoundedButton.swift */,
 				8C07031821F60E26004C4938 /* AvatarCell.swift */,
+				8C543E3621F66B860017E474 /* CircleImage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				8CFB14F221F0C1C200EFBBA5 /* LoginViewController.swift in Sources */,
 				8CFB14F921F219B200EFBBA5 /* RoundedButton.swift in Sources */,
 				8C29ED9221EF6BE3002AEBF0 /* AppDelegate.swift in Sources */,
+				8C543E3721F66B860017E474 /* CircleImage.swift in Sources */,
 				8C07031521F4EF13004C4938 /* UserDataService.swift in Sources */,
 				8CFB14EA21EF76BD00EFBBA5 /* ChatViewController.swift in Sources */,
 				8CFB14F721F14A5400EFBBA5 /* AuthService.swift in Sources */,
