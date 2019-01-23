@@ -50,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvI-v7-wfn">
-                                <rect key="frame" x="115" y="808" width="46" height="33"/>
+                                <rect key="frame" x="105" y="808" width="46" height="33"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -104,7 +104,7 @@
                             <constraint firstItem="DhA-A0-3Jy" firstAttribute="trailing" secondItem="DNX-Gs-o5O" secondAttribute="trailing" constant="80" id="1zy-3f-k5A"/>
                             <constraint firstItem="Xvj-sf-Om9" firstAttribute="bottom" secondItem="DhA-A0-3Jy" secondAttribute="bottom" id="59Y-pk-Kbf"/>
                             <constraint firstItem="XvI-v7-wfn" firstAttribute="centerY" secondItem="Xvj-sf-Om9" secondAttribute="centerY" id="Aew-kj-6eJ"/>
-                            <constraint firstItem="XvI-v7-wfn" firstAttribute="leading" secondItem="Xvj-sf-Om9" secondAttribute="trailing" constant="20" id="Ges-OI-HXv"/>
+                            <constraint firstItem="XvI-v7-wfn" firstAttribute="leading" secondItem="Xvj-sf-Om9" secondAttribute="trailing" constant="10" id="Ges-OI-HXv"/>
                             <constraint firstItem="pFd-Mv-zvk" firstAttribute="top" secondItem="Jik-Ao-izC" secondAttribute="bottom" constant="20" id="KUB-Al-qrt"/>
                             <constraint firstItem="pFd-Mv-zvk" firstAttribute="leading" secondItem="DhA-A0-3Jy" secondAttribute="leading" constant="20" id="ZyY-Uz-9g8"/>
                             <constraint firstItem="DNX-Gs-o5O" firstAttribute="centerY" secondItem="pFd-Mv-zvk" secondAttribute="centerY" id="bdL-YD-THV"/>

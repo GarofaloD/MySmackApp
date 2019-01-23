@@ -74,6 +74,19 @@ class UserDataService {
         return newUIColor
     }
     
+    //Setting up everything blank for the logout
+    func logoutUser(){
+        self.id = ""
+        self.avatarColor = ""
+        self.avatarName = ""
+        self.email = ""
+        self.name = ""
+        
+        AuthService.instance.isLoggedIn = false
+        AuthService.instance.userEmail = ""
+        AuthService.instance.authToken = ""
+    }
+    
     
     
 

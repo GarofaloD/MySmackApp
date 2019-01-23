@@ -16,6 +16,8 @@
 		8C29ED9921EF6BE4002AEBF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C29ED9821EF6BE4002AEBF0 /* Assets.xcassets */; };
 		8C29ED9C21EF6BE4002AEBF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C29ED9A21EF6BE4002AEBF0 /* LaunchScreen.storyboard */; };
 		8C543E3721F66B860017E474 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C543E3621F66B860017E474 /* CircleImage.swift */; };
+		8C543E3E21F7DDC90017E474 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C543E3C21F7DDC90017E474 /* ProfileViewController.swift */; };
+		8C543E3F21F7DDC90017E474 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C543E3D21F7DDC90017E474 /* ProfileViewController.xib */; };
 		8CFB14E421EF72FB00EFBBA5 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14E321EF72FB00EFBBA5 /* SWRevealViewController.m */; };
 		8CFB14EA21EF76BD00EFBBA5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14E921EF76BD00EFBBA5 /* ChatViewController.swift */; };
 		8CFB14EC21EF76D800EFBBA5 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14EB21EF76D800EFBBA5 /* ChannelViewController.swift */; };
@@ -40,6 +42,8 @@
 		8C29ED9B21EF6BE4002AEBF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C29ED9D21EF6BE4002AEBF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C543E3621F66B860017E474 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		8C543E3C21F7DDC90017E474 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8C543E3D21F7DDC90017E474 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		8CFB14E121EF72FA00EFBBA5 /* SmackApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmackApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		8CFB14E221EF72FB00EFBBA5 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		8CFB14E321EF72FB00EFBBA5 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 		8C29ED9021EF6BE3002AEBF0 /* SmackApp */ = {
 			isa = PBXGroup;
 			children = (
+				8C543E4021F7DDE00017E474 /* XIBs */,
 				8CFB14F521F14A3A00EFBBA5 /* Services */,
 				8CFB14E821EF756E00EFBBA5 /* Utilities */,
 				8CFB14E721EF756000EFBBA5 /* Model */,
@@ -108,6 +113,14 @@
 				8C29ED9D21EF6BE4002AEBF0 /* Info.plist */,
 			);
 			path = SmackApp;
+			sourceTree = "<group>";
+		};
+		8C543E4021F7DDE00017E474 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				8C543E3D21F7DDC90017E474 /* ProfileViewController.xib */,
+			);
+			path = XIBs;
 			sourceTree = "<group>";
 		};
 		8CFB14E021EF72E300EFBBA5 /* Supporting Files */ = {
@@ -128,6 +141,7 @@
 				8CFB14F121F0C1C200EFBBA5 /* LoginViewController.swift */,
 				8CFB14F321F0C3B400EFBBA5 /* CreateAccountViewController.swift */,
 				8C07031621F607E7004C4938 /* AvatarPickerViewController.swift */,
+				8C543E3C21F7DDC90017E474 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -239,6 +253,7 @@
 			files = (
 				8C29ED9C21EF6BE4002AEBF0 /* LaunchScreen.storyboard in Resources */,
 				8C29ED9921EF6BE4002AEBF0 /* Assets.xcassets in Resources */,
+				8C543E3F21F7DDC90017E474 /* ProfileViewController.xib in Resources */,
 				8C29ED9721EF6BE3002AEBF0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +322,7 @@
 				8CFB14F421F0C3B400EFBBA5 /* CreateAccountViewController.swift in Sources */,
 				8C07031921F60E26004C4938 /* AvatarCell.swift in Sources */,
 				8CFB14EC21EF76D800EFBBA5 /* ChannelViewController.swift in Sources */,
+				8C543E3E21F7DDC90017E474 /* ProfileViewController.swift in Sources */,
 				8CFB14E421EF72FB00EFBBA5 /* SWRevealViewController.m in Sources */,
 				8CFB14F021F0040000EFBBA5 /* Constants.swift in Sources */,
 			);
