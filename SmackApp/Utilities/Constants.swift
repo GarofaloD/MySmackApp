@@ -16,6 +16,7 @@ let BASE_URL = "https://smackappdaniel.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)/account/register"
 let URL_LOGIN = "\(BASE_URL)/account/login"
 let URL_ADD_USER = "\(BASE_URL)/user/add"
+let URL_USER_BY_EMAIL = "\(BASE_URL)/user/byEmail/"
 
 
 //Segues
@@ -32,6 +33,11 @@ let USER_EMAIL = "userEmail"
 
 //Additional inputs for requests
 let HEADER = [
+    "Content-Type": "application/json; charset=utf-8"
+]
+
+let HEADER_WITH_BEARER = [
+    "Authorization": "Bearer \(AuthService.instance.authToken)",
     "Content-Type": "application/json; charset=utf-8"
 ]
 

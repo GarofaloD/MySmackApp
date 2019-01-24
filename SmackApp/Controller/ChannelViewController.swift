@@ -44,6 +44,11 @@ class ChannelViewController: UIViewController {
         
     }
     
+    //Refreshing info on the VC based on the currebt state of the app, bypassing the notification. Useful to keep info on the VC even if we close it
+    override func viewDidAppear(_ animated: Bool) {
+        setupUserInfo()
+    }
+    
 
     //MARK:- Buttons
     @IBAction func loginWhenPressed(_ sender: UIButton) {
@@ -62,6 +67,13 @@ class ChannelViewController: UIViewController {
     //MARK:- Custom functions
     //Notification observer base function. 
     @objc func userDataDidChange(_ notification: Notification){
+        //Everytime the notification changes, info on the screen will too
+        setupUserInfo()
+    }
+    
+    
+    //Base configuration for information display on the user
+    func setupUserInfo(){
         if AuthService.instance.isLoggedIn {
             //If logged in bring in Name, avatar and custom background color (converted with .returnUIColor)
             loginButton.setTitle(UserDataService.instance.name, for: .normal)

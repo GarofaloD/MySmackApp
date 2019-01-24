@@ -172,7 +172,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="y2I-OS-8bx">
                                 <rect key="frame" x="82" y="235" width="250" height="86"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xHU-pv-eQX">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xHU-pv-eQX">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="yRW-RM-X0e"/>
@@ -232,7 +232,14 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginWhenPressed:" destination="RZ0-IY-LdR" eventType="touchUpInside" id="oc8-I3-ykA"/>
+                                </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="QwE-uw-xuP">
+                                <rect key="frame" x="188.66666666666666" y="336" width="37" height="37"/>
+                                <color key="color" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -245,11 +252,16 @@
                             <constraint firstItem="1Lw-KK-i8w" firstAttribute="centerX" secondItem="0ON-tR-ENt" secondAttribute="centerX" id="gFA-ry-HLx"/>
                             <constraint firstItem="y2I-OS-8bx" firstAttribute="top" secondItem="1Lw-KK-i8w" secondAttribute="bottom" constant="91" id="kQP-iq-HQP"/>
                             <constraint firstItem="GH3-jF-rYg" firstAttribute="centerX" secondItem="0ON-tR-ENt" secondAttribute="centerX" id="nDQ-oR-arQ"/>
+                            <constraint firstItem="QwE-uw-xuP" firstAttribute="top" secondItem="y2I-OS-8bx" secondAttribute="bottom" constant="15" id="qmc-GI-dar"/>
                             <constraint firstItem="y2I-OS-8bx" firstAttribute="centerX" secondItem="0ON-tR-ENt" secondAttribute="centerX" id="rgF-zl-XWN"/>
+                            <constraint firstItem="QwE-uw-xuP" firstAttribute="centerX" secondItem="0ON-tR-ENt" secondAttribute="centerX" id="xBX-OA-4r7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mFg-lt-RFo"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="QwE-uw-xuP" id="Anw-jS-Gkd"/>
+                        <outlet property="emailTxt" destination="xHU-pv-eQX" id="6rc-uH-4nM"/>
+                        <outlet property="passwordTxt" destination="Cft-Vy-FmF" id="Df2-py-U4m"/>
                         <segue destination="kFG-6g-rc8" kind="show" identifier="goToCreateAccount" id="DQ3-dM-46z"/>
                     </connections>
                 </viewController>

@@ -26,6 +26,14 @@ class ChatViewController: UIViewController {
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
         self.view.addGestureRecognizer((self.revealViewController()?.tapGestureRecognizer())!)
         
+        //If login status is true, broadcast change on te status of the user and repopulate the data
+        if AuthService.instance.isLoggedIn{
+            AuthService.instance.findUserByEmail { (success) in
+                NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+            }
+        }
+        
+        
     }
     
 
