@@ -39,7 +39,7 @@ class ChannelViewController: UIViewController {
         //Retractable VC configuration
         self.revealViewController()?.rearViewRevealWidth = self.view.frame.size.width - 60
         
-        //Notification Observer
+        //Notification Observer. We are going to be listening for this notification
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelViewController.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         
     }
