@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ChannelViewController: UIViewController {
+class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    
 
     //MARK:- Outlets
     
@@ -16,6 +18,7 @@ class ChannelViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBAction func prepareForUnwind(segue:UIStoryboardSegue){} //This IBAction is for the unwind from the "Create Account VC"
     
+    @IBOutlet weak var tableView: UITableView!
     
     
     
@@ -28,6 +31,21 @@ class ChannelViewController: UIViewController {
     
     
     //TableView Functions
+    //Number of rows
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessageService.instance.channels.count
+    }
+    
+    //Content of rows
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as? ChannelCell{
+            let channel = MessageService.instance.channels[indexPath.row]
+            cell.configureCell(channel: channel)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
+    }
     
     
     
@@ -35,6 +53,11 @@ class ChannelViewController: UIViewController {
     //MARK:- Load up functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //tableview load delegation
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         
         //Retractable VC configuration
         self.revealViewController()?.rearViewRevealWidth = self.view.frame.size.width - 60

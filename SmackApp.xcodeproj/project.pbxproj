@@ -20,6 +20,7 @@
 		8C543E3F21F7DDC90017E474 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C543E3D21F7DDC90017E474 /* ProfileViewController.xib */; };
 		8C543E4221FB446C0017E474 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C543E4121FB446C0017E474 /* MessageService.swift */; };
 		8C543E4421FB44F90017E474 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C543E4321FB44F90017E474 /* Channel.swift */; };
+		8C543E4621FB59620017E474 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C543E4521FB59620017E474 /* ChannelCell.swift */; };
 		8CFB14E421EF72FB00EFBBA5 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14E321EF72FB00EFBBA5 /* SWRevealViewController.m */; };
 		8CFB14EA21EF76BD00EFBBA5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14E921EF76BD00EFBBA5 /* ChatViewController.swift */; };
 		8CFB14EC21EF76D800EFBBA5 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14EB21EF76D800EFBBA5 /* ChannelViewController.swift */; };
@@ -48,6 +49,7 @@
 		8C543E3D21F7DDC90017E474 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		8C543E4121FB446C0017E474 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		8C543E4321FB44F90017E474 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		8C543E4521FB59620017E474 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		8CFB14E121EF72FA00EFBBA5 /* SmackApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmackApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		8CFB14E221EF72FB00EFBBA5 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		8CFB14E321EF72FB00EFBBA5 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				8CFB14F821F219B200EFBBA5 /* RoundedButton.swift */,
 				8C07031821F60E26004C4938 /* AvatarCell.swift */,
 				8C543E3621F66B860017E474 /* CircleImage.swift */,
+				8C543E4521FB59620017E474 /* ChannelCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CFB14F221F0C1C200EFBBA5 /* LoginViewController.swift in Sources */,
+				8C543E4621FB59620017E474 /* ChannelCell.swift in Sources */,
 				8CFB14F921F219B200EFBBA5 /* RoundedButton.swift in Sources */,
 				8C29ED9221EF6BE3002AEBF0 /* AppDelegate.swift in Sources */,
 				8C543E3721F66B860017E474 /* CircleImage.swift in Sources */,
