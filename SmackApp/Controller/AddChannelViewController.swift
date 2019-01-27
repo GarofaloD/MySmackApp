@@ -11,8 +11,8 @@ import UIKit
 class AddChannelViewController: UIViewController {
 
     // MARK: - Outlets
-    @IBOutlet weak var channelName: UITextField!
-    @IBOutlet weak var channelDescription: UITextField!
+    @IBOutlet weak var channelNameTxt: UITextField!
+    @IBOutlet weak var channelDescTxt: UITextField!
     @IBOutlet weak var bgView: UIView!
     
     
@@ -37,6 +37,18 @@ class AddChannelViewController: UIViewController {
 
     @IBAction func createChannelWhenPressed(_ sender: RoundedButton) {
         
+        //Verification of existance of data in the fields
+        guard let channelName = channelNameTxt.text, channelNameTxt.text != "" else {return}
+        guard let channelDescription = channelDescTxt.text else {return}
+        
+        SocketService.instance.addChannel(channelName: channelName, channelDescription: channelDescription) { (success) in
+            
+            if success {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
+        
     }
     
     
@@ -50,8 +62,8 @@ class AddChannelViewController: UIViewController {
         bgView.addGestureRecognizer(closeTouch)
         
         //Setting up color for the placeholder
-        channelName.attributedPlaceholder = NSAttributedString(string: "Channel Name", attributes: [NSAttributedString.Key.foregroundColor: smackPurplePlaceholder])
-        channelDescription.attributedPlaceholder = NSAttributedString(string: "Channel Description", attributes: [NSAttributedString.Key.foregroundColor: smackPurplePlaceholder])
+        channelNameTxt.attributedPlaceholder = NSAttributedString(string: "Channel Name", attributes: [NSAttributedString.Key.foregroundColor: smackPurplePlaceholder])
+        channelDescTxt.attributedPlaceholder = NSAttributedString(string: "Channel Description", attributes: [NSAttributedString.Key.foregroundColor: smackPurplePlaceholder])
     }
     
     //Subfunction for the gesture recognizer

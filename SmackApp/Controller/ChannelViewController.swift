@@ -58,14 +58,24 @@ class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         
-        
         //Retractable VC configuration
         self.revealViewController()?.rearViewRevealWidth = self.view.frame.size.width - 60
         
         //Notification Observer. We are going to be listening for this notification
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelViewController.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+    
+        //Checking for new channels
+        SocketService.instance.getChannel { (success) in
+            if success {
+                self.tableView.reloadData()
+            }
+        }
         
     }
+    
+    
+    
+    
     
     //Refreshing info on the VC based on the currebt state of the app, bypassing the notification. Useful to keep info on the VC even if we close it
     override func viewDidAppear(_ animated: Bool) {

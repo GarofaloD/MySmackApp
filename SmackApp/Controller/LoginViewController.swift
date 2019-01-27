@@ -63,6 +63,8 @@ class LoginViewController: UIViewController {
                         self.dismiss(animated: true, completion: nil)
                     }
                 })
+            } else {
+                print("Big error")
             }
             
         }

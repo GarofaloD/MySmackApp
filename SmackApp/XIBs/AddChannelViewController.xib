@@ -13,8 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddChannelViewController" customModule="SmackApp" customModuleProvider="target">
             <connections>
                 <outlet property="bgView" destination="zD1-1j-Jl7" id="psx-wr-qPG"/>
-                <outlet property="channelDescription" destination="1DN-Pm-BS1" id="99A-22-yIF"/>
-                <outlet property="channelName" destination="dFv-6k-DWn" id="jlR-eX-uHi"/>
+                <outlet property="channelDescTxt" destination="1DN-Pm-BS1" id="99A-22-yIF"/>
+                <outlet property="channelNameTxt" destination="dFv-6k-DWn" id="jlR-eX-uHi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
