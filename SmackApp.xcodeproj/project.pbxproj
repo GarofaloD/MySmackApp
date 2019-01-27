@@ -21,6 +21,8 @@
 		8C543E4221FB446C0017E474 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C543E4121FB446C0017E474 /* MessageService.swift */; };
 		8C543E4421FB44F90017E474 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C543E4321FB44F90017E474 /* Channel.swift */; };
 		8C543E4621FB59620017E474 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C543E4521FB59620017E474 /* ChannelCell.swift */; };
+		8C543E4921FCDF400017E474 /* AddChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C543E4721FCDF400017E474 /* AddChannelViewController.swift */; };
+		8C543E4A21FCDF400017E474 /* AddChannelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C543E4821FCDF400017E474 /* AddChannelViewController.xib */; };
 		8CFB14E421EF72FB00EFBBA5 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14E321EF72FB00EFBBA5 /* SWRevealViewController.m */; };
 		8CFB14EA21EF76BD00EFBBA5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14E921EF76BD00EFBBA5 /* ChatViewController.swift */; };
 		8CFB14EC21EF76D800EFBBA5 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFB14EB21EF76D800EFBBA5 /* ChannelViewController.swift */; };
@@ -50,6 +52,8 @@
 		8C543E4121FB446C0017E474 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		8C543E4321FB44F90017E474 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		8C543E4521FB59620017E474 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
+		8C543E4721FCDF400017E474 /* AddChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelViewController.swift; sourceTree = "<group>"; };
+		8C543E4821FCDF400017E474 /* AddChannelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddChannelViewController.xib; sourceTree = "<group>"; };
 		8CFB14E121EF72FA00EFBBA5 /* SmackApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmackApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		8CFB14E221EF72FB00EFBBA5 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		8CFB14E321EF72FB00EFBBA5 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 		8C543E4021F7DDE00017E474 /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				8C543E4821FCDF400017E474 /* AddChannelViewController.xib */,
 				8C543E3D21F7DDC90017E474 /* ProfileViewController.xib */,
 			);
 			path = XIBs;
@@ -148,6 +153,7 @@
 				8CFB14F321F0C3B400EFBBA5 /* CreateAccountViewController.swift */,
 				8C07031621F607E7004C4938 /* AvatarPickerViewController.swift */,
 				8C543E3C21F7DDC90017E474 /* ProfileViewController.swift */,
+				8C543E4721FCDF400017E474 /* AddChannelViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -261,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C29ED9C21EF6BE4002AEBF0 /* LaunchScreen.storyboard in Resources */,
+				8C543E4A21FCDF400017E474 /* AddChannelViewController.xib in Resources */,
 				8C29ED9921EF6BE4002AEBF0 /* Assets.xcassets in Resources */,
 				8C543E3F21F7DDC90017E474 /* ProfileViewController.xib in Resources */,
 				8C29ED9721EF6BE3002AEBF0 /* Main.storyboard in Resources */,
@@ -332,6 +339,7 @@
 				8C07031721F607E7004C4938 /* AvatarPickerViewController.swift in Sources */,
 				8CFB14EE21EFF3F600EFBBA5 /* GradientView.swift in Sources */,
 				8CFB14F421F0C3B400EFBBA5 /* CreateAccountViewController.swift in Sources */,
+				8C543E4921FCDF400017E474 /* AddChannelViewController.swift in Sources */,
 				8C07031921F60E26004C4938 /* AvatarCell.swift in Sources */,
 				8CFB14EC21EF76D800EFBBA5 /* ChannelViewController.swift in Sources */,
 				8C543E3E21F7DDC90017E474 /* ProfileViewController.swift in Sources */,

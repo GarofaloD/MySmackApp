@@ -66,13 +66,6 @@ class LoginViewController: UIViewController {
             }
             
         }
-            
-            
-            
-            
-            
-        
-        
     }
     
 

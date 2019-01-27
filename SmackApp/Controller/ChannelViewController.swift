@@ -73,11 +73,14 @@ class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
 
+    
+    
+    
     //MARK:- Buttons
     @IBAction func loginWhenPressed(_ sender: UIButton) {
         if AuthService.instance.isLoggedIn == true {
             //Show profile page / xib
-            let profile = ProfileViewController()
+            let profile = ProfileViewController() //
             profile.modalPresentationStyle = .custom
             present(profile, animated: true, completion: nil)
         } else {
@@ -85,6 +88,15 @@ class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
     }
+    
+    @IBAction func addChannelWhenPressed(_ sender: UIButton) {
+        //Method to present XIBs
+        let addChannel = AddChannelViewController()
+        addChannel.modalPresentationStyle = .custom
+        present(addChannel, animated: true, completion: nil)
+    }
+    
+    
     
     
     //MARK:- Custom functions
@@ -110,4 +122,8 @@ class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
 
+    
+    
+    
+    
 }
