@@ -30,7 +30,7 @@ class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     
-    //TableView Functions
+    //MARK:- TableView Functions
     //Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MessageService.instance.channels.count
@@ -47,6 +47,18 @@ class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    //Selection of row
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Select a channel and notify ChatVC that a channel has been selected, passing the value of the channel
+        let channel = MessageService.instance.channels[indexPath.row]
+        MessageService.instance.selectedChannel = channel
+        NotificationCenter.default.post(name: NOTIF_CHANNELS_SELECTED, object: nil)
+        
+        //Once selected, toggle this VC back and revea ChatVC
+        self.revealViewController()?.revealToggle(animated: true)
+    }
+    
+    
     
     
     
@@ -61,7 +73,10 @@ class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewD
         //Retractable VC configuration
         self.revealViewController()?.rearViewRevealWidth = self.view.frame.size.width - 60
         
-        //Notification Observer. We are going to be listening for this notification
+        //Notification Observer. We are going to be listening for this notification (channels pulled)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelViewController.channelsLoaded(_:)), name: NOTIF_CHANNELS_LOADED, object: nil)
+        
+        //Notification Observer. We are going to be listening for this notification (user logged in or not)
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelViewController.userDataDidChange(_:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
     
         //Checking for new channels
@@ -70,22 +85,16 @@ class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.tableView.reloadData()
             }
         }
-        
     }
     
-    
-    
-    
-    
+
     //Refreshing info on the VC based on the currebt state of the app, bypassing the notification. Useful to keep info on the VC even if we close it
     override func viewDidAppear(_ animated: Bool) {
         setupUserInfo()
     }
     
 
-    
-    
-    
+
     //MARK:- Buttons
     @IBAction func loginWhenPressed(_ sender: UIButton) {
         if AuthService.instance.isLoggedIn == true {
@@ -100,15 +109,17 @@ class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func addChannelWhenPressed(_ sender: UIButton) {
-        //Method to present XIBs
-        let addChannel = AddChannelViewController()
-        addChannel.modalPresentationStyle = .custom
-        present(addChannel, animated: true, completion: nil)
+        //Only able to add channels if we are logged in
+        if AuthService.instance.isLoggedIn == true {
+            //Method to present XIBs
+            let addChannel = AddChannelViewController()
+            addChannel.modalPresentationStyle = .custom
+            present(addChannel, animated: true, completion: nil)
+        }
     }
     
     
-    
-    
+
     //MARK:- Custom functions
     //Notification observer base function. 
     @objc func userDataDidChange(_ notification: Notification){
@@ -128,10 +139,13 @@ class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewD
             loginButton.setTitle("Login", for: .normal)
             userImage.image = UIImage(named: "menuProfileIcon")
             userImage.backgroundColor = UIColor.clear
+            tableView.reloadData()
         }
     }
     
-
+    @objc func channelsLoaded(_ notif: Notification) {
+        tableView.reloadData()
+    }
     
     
     

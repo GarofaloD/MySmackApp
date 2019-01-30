@@ -47,6 +47,7 @@ class SocketService: NSObject {
         completion(true)
         
     }
+    
     //.ON to receive channels from teh server
     func getChannel(completion: @escaping CompletionHandler){
         //Declaration of the .On,

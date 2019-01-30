@@ -17,8 +17,10 @@ class MessageService {
     
     //MARK: Properties
     var channels = [Channel]()
+    var selectedChannel : Channel?
     
-    //MARK: Network request to get channels
+    //MARK:- Channel requests in / out
+    //Network request to get channels
     func findAllChannels(completion: @escaping CompletionHandler){
         
         Alamofire.request(URL_GET_CHANNELS, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: HEADER_WITH_BEARER).responseJSON { (response) in
@@ -40,6 +42,8 @@ class MessageService {
                         self.channels.append(channel)
                     }
                 }
+                //Notify the ChannelVC that channels were found
+                NotificationCenter.default.post(name: NOTIF_CHANNELS_LOADED, object: nil)
                 print(self.channels)
                 completion(true)
             } else {
@@ -49,7 +53,10 @@ class MessageService {
         }
     }
     
-    
+    //Request to clear channels.This is meant to run if we are loggin out
+    func clearChannels(){
+        channels.removeAll()
+    }
 
     
 }

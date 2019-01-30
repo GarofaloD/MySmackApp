@@ -85,14 +85,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#general" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHz-AP-zr4">
-                                                    <rect key="frame" x="40" y="12" width="294" height="20"/>
+                                                    <rect key="frame" x="20" y="12" width="334" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="MHz-AP-zr4" firstAttribute="leading" secondItem="wqc-qc-6Td" secondAttribute="leadingMargin" constant="20" id="2ou-1b-3Oj"/>
+                                                <constraint firstItem="MHz-AP-zr4" firstAttribute="leading" secondItem="wqc-qc-6Td" secondAttribute="leadingMargin" id="2ou-1b-3Oj"/>
                                                 <constraint firstItem="MHz-AP-zr4" firstAttribute="centerY" secondItem="wqc-qc-6Td" secondAttribute="centerY" id="gL8-OI-1LB"/>
                                                 <constraint firstItem="MHz-AP-zr4" firstAttribute="centerX" secondItem="wqc-qc-6Td" secondAttribute="centerX" id="hXz-6L-B9B"/>
                                             </constraints>
@@ -498,6 +498,7 @@
                         <viewLayoutGuide key="safeArea" id="0mq-KX-bKe"/>
                     </view>
                     <connections>
+                        <outlet property="channelNameLbl" destination="9RJ-l4-zJN" id="MAq-GN-QE3"/>
                         <outlet property="menuButton" destination="dcB-Nb-pto" id="K4J-hm-LGQ"/>
                     </connections>
                 </viewController>
