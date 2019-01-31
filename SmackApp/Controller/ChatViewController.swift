@@ -55,29 +55,68 @@ class ChatViewController: UIViewController {
         //Everytime the notification changes, info on the screen will too
         if AuthService.instance.isLoggedIn {
             //get Channels
-            onLogIInGetMessges()
+            onLogIInGetMessages()
         } else {
             channelNameLbl.text = "Please, log in"
         }
     }
     
     
-    func onLogIInGetMessges(){
+    func onLogIInGetMessages(){
         MessageService.instance.findAllChannels { (success) in
             if success {
-                //Do stuff with Channels
+                //If there are channels for this username, set up the first channel on the ara as the first on the table, check the name and set it up on the table
+                if MessageService.instance.channels.count > 0 {
+                    MessageService.instance.selectedChannel = MessageService.instance.channels[0]
+                    self.updateWithChannel()
+                } else {
+                    self.channelNameLbl.text = "No channel yet"
+                }
             }
         }
     }
     
+    //Base function for notification center
     @objc func channelSelected(_ notif: Notification) {
         updateWithChannel()
-        
     }
     
+    //Subfunction for notification. Grab the name of the channel (if empty, set up blank value), set up the name on the channel name and get the messages from that channel
     func updateWithChannel(){
         let channelName = MessageService.instance.selectedChannel?.channelTitle ?? ""
         channelNameLbl.text = "#\(channelName)"
+        getMessages()
     }
 
+    //Getting the messages
+    func getMessages(){
+        //Check on the channel ID. if found...
+        guard let channelId = MessageService.instance.selectedChannel?.id else {return}
+        //...run the get call 
+        MessageService.instance.findAllMessagesForChannel(channelID: channelId) { (success) in
+            
+            if success {
+                
+            }
+            
+            
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
