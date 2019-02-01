@@ -8,12 +8,15 @@
 
 import UIKit
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    
 
     //MARK:- Outlets
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var channelNameLbl: UILabel!
     @IBOutlet weak var messageTextBox: UITextField!
+    @IBOutlet weak var tableView: UITableView!
     
     
 
@@ -30,9 +33,8 @@ class ChatViewController: UIViewController {
         //gesture recognizer to dissmiss the keyboard
         gestureRecognizer()
         
-        
+        //Reveal VC config call
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
-        
         self.view.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
         self.view.addGestureRecognizer((self.revealViewController()?.tapGestureRecognizer())!)
         
@@ -48,9 +50,38 @@ class ChatViewController: UIViewController {
                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
             }
         }
+        
+        //Tableview load up
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        //Cell height auto dimension
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableView.automaticDimension
+
     }
     
 
+    //MARK:- TableView functions
+    
+    //Number of rows
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessageService.instance.messages.count
+    }
+    
+    //Content of rows
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell{
+            let message = MessageService.instance.messages[indexPath.row]
+            cell.configureCell(message: message)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
+    }
+    
+
+    
     //MARK:- Buttons
     @IBAction func sendMessageWhenPressed(_ sender: UIButton) {
         //Only send messages if logged in
@@ -70,15 +101,9 @@ class ChatViewController: UIViewController {
                     
                 }
                 
-                
-                
             }
             
         }
-        
-        
-        
-        
     }
     
     
@@ -112,6 +137,7 @@ class ChatViewController: UIViewController {
         }
     }
     
+    
     //Base function for notification center
     @objc func channelSelected(_ notif: Notification) {
         updateWithChannel()
@@ -132,15 +158,16 @@ class ChatViewController: UIViewController {
         MessageService.instance.findAllMessagesForChannel(channelID: channelId) { (success) in
             
             if success {
-                
+                //If we find messages, reload table view
+                self.tableView.reloadData()
             }
             
           }
-        }
+    }
         
         
     
-    
+    //MARK:- Gesture recognizer / Keyboard
     func gestureRecognizer(){
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(ChatViewController.handleTap))
