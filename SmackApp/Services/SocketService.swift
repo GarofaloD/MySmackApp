@@ -39,7 +39,7 @@ class SocketService: NSObject {
     }
     
     //MARK:- Socket Functions - Channels
-    //Emition of message from the app to the server. API requires a specific message with 2 main components: channel name and description
+    //Emition (sending) of message from the app to the server. API requires a specific message with 2 main components: channel name and description
     func addChannel(channelName: String, channelDescription: String, completion: @escaping CompletionHandler){
         
         //Emition of message and verification
@@ -52,7 +52,7 @@ class SocketService: NSObject {
     func getChannel(completion: @escaping CompletionHandler){
         //Declaration of the .On,
         //We need to receive an array of data that will come with three pieces of info for each channel: Name, Description and ID. We also need to check the acknowledgement
-        socket.on("channelCreated") { (dataArray, ack) in
+        socket.on("channelCreated") { (dataArray, ack) in //"channelCreated" is the name of the event according tothe api
             
             //Parsing elements of the array onto separate values
             guard let channelName = dataArray[0] as? String else {return}
@@ -67,7 +67,7 @@ class SocketService: NSObject {
     }
     
     //MARK:- Socket Functions - Messages
-    //Adding the message
+    //Adding / sending the message
     func addMessage(messageBody: String, userId: String, channelId: String, completion: @escaping CompletionHandler ){
         
         //Connection to the insstance so we dont have to ty ethe whole thing every time
@@ -78,6 +78,33 @@ class SocketService: NSObject {
     }
     
     
+    //.ON to receive messages from teh server
+    func getChatMessage(completion: @escaping CompletionHandler){
+        //Declaration of the .On,
+        //We need to receive an array of data that will come with several pieces of info for each message. We also need to check the acknowledgement of receival
+        socket.on("messageCreated") { (dataArray, ack) in //"messageCreated" is the name of the event according tothe api
+            
+            //Parsing elements of the array onto separate values
+            guard let msgBody = dataArray[0] as? String else {return}
+            guard let channelId = dataArray[2] as? String else {return} //This one has position number 2 on the array.We are not saving pos 1
+            guard let userName = dataArray[3] as? String else {return}
+            guard let userAvatar = dataArray[4] as? String else {return}
+            guard let userAvatarColor = dataArray[5] as? String else {return}
+            guard let id = dataArray[6] as? String else {return}
+            guard let timeStamp = dataArray[7] as? String else {return}
+            
+            //As long as the id on channel id matches an existing channel and the user is logged in..
+            if channelId == MessageService.instance.selectedChannel?.id && AuthService.instance.isLoggedIn{
+                //...there will be creation of a new message, appending on the array of messages and check for completion
+                let newMessage = Message(message: msgBody, userName: userName, channelID: channelId, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timeStamp: timeStamp)
+                MessageService.instance.messages.append(newMessage)
+                completion(true)
+            } else {
+                completion(false)
+                
+            }
+        }
+    }
     
     
     

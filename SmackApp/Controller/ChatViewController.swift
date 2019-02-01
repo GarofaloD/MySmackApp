@@ -10,17 +10,15 @@ import UIKit
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
-
     //MARK:- Outlets
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var channelNameLbl: UILabel!
     @IBOutlet weak var messageTextBox: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sendButton: UIButton!
     
-    
-
     //MARK:- Properties
+    var isTyping = false
     
 
     //MARK:- Load Up Functions
@@ -32,6 +30,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //gesture recognizer to dissmiss the keyboard
         gestureRecognizer()
+        
+        //Send button to be hidden by default
+        sendButton.isHidden = true
         
         //Reveal VC config call
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
@@ -51,6 +52,21 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
+        //Socket call to update table view automatically with each message sent
+        SocketService.instance.getChatMessage { (success) in
+            if success {
+                self.tableView.reloadData()
+                //If there is more than one message on the array
+                if MessageService.instance.messages.count > 0 {
+                    //Create an element that will be set to the last object on the array...
+                    let endIndex = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
+                    //... and scroll to it on the bottom of the table
+                    self.tableView.scrollToRow(at: endIndex, at: .bottom, animated: false)
+                }
+            }
+        }
+        
+        
         //Tableview load up
         tableView.delegate = self
         tableView.dataSource = self
@@ -61,12 +77,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
     
-
-    //MARK:- TableView functions
     
+    
+    //MARK:- TableView functions
     //Number of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MessageService.instance.messages.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     //Content of rows
@@ -106,10 +126,29 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    //Hide send button if there is no text or there is no typing on the message field
+    @IBAction func messageBoxEditing(_ sender: UITextField) {
+        
+        if messageTextBox.text == "" {
+            isTyping = false
+            sendButton.isHidden = true
+        } else {
+            if isTyping == false {
+                sendButton.isHidden = false
+            }
+            isTyping = true
+        }
+    }
     
     
     
     
+    
+    
+    
+    
+    
+
     //MARK:- Custom Functions
     //Base functions for Notif center
     @objc func userDataDidChange(_ notification: Notification){
@@ -119,6 +158,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             onLogIInGetMessages()
         } else {
             channelNameLbl.text = "Please, log in"
+            tableView.reloadData()
         }
     }
     
