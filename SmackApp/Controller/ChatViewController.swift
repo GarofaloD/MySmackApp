@@ -13,6 +13,7 @@ class ChatViewController: UIViewController {
     //MARK:- Outlets
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var channelNameLbl: UILabel!
+    @IBOutlet weak var messageTextBox: UITextField!
     
     
 
@@ -22,6 +23,13 @@ class ChatViewController: UIViewController {
     //MARK:- Load Up Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Class that will allow the whole view to shift up when tapping on the Message text field
+        view.bindToKeyboard()
+        
+        //gesture recognizer to dissmiss the keyboard
+        gestureRecognizer()
+        
         
         menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         
@@ -44,6 +52,34 @@ class ChatViewController: UIViewController {
     
 
     //MARK:- Buttons
+    @IBAction func sendMessageWhenPressed(_ sender: UIButton) {
+        //Only send messages if logged in
+        if AuthService.instance.isLoggedIn{
+            
+            guard let channelId = MessageService.instance.selectedChannel?.id else {return}
+            guard let message = messageTextBox.text else {return}
+            
+            SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId) { (success) in
+                
+                if success {
+                    self.messageTextBox.text = ""
+                    self.messageTextBox.resignFirstResponder()
+                    
+                    
+                } else {
+                    
+                }
+                
+                
+                
+            }
+            
+        }
+        
+        
+        
+        
+    }
     
     
     
@@ -99,14 +135,24 @@ class ChatViewController: UIViewController {
                 
             }
             
-            
+          }
         }
         
         
+    
+    
+    func gestureRecognizer(){
         
-        
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ChatViewController.handleTap))
+        view.addGestureRecognizer(tap)
     }
+    
+    @objc func handleTap(){
+        view.endEditing(true)
+    }
+    
+        
+    
     
     
     

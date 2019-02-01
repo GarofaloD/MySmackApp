@@ -38,7 +38,7 @@ class SocketService: NSObject {
         socket.disconnect()
     }
     
-    //MARK:- Socket Functions
+    //MARK:- Socket Functions - Channels
     //Emition of message from the app to the server. API requires a specific message with 2 main components: channel name and description
     func addChannel(channelName: String, channelDescription: String, completion: @escaping CompletionHandler){
         
@@ -65,6 +65,27 @@ class SocketService: NSObject {
             completion(true)
         }
     }
+    
+    //MARK:- Socket Functions - Messages
+    //Adding the message
+    func addMessage(messageBody: String, userId: String, channelId: String, completion: @escaping CompletionHandler ){
+        
+        //Connection to the insstance so we dont have to ty ethe whole thing every time
+        let user = UserDataService.instance
+        
+        socket.emit("newMessage", messageBody, userId, channelId, user.name, user.avatarName, user.avatarColor)
+        completion(true)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
