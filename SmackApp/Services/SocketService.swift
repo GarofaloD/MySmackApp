@@ -106,7 +106,21 @@ class SocketService: NSObject {
         }
     }
     
-    
+    //MARK:- Typing users
+    //The completion handler looks for a dictionary
+    func getTypingUsers(_ completionHandler: @escaping (_ typingUsers: [String: String]) -> Void) {
+        
+        socket.on("userTypingUpdate") { (dataArray, ack) in
+            
+            guard let typingUsers = dataArray[0] as? [String:String] else {return}
+            
+            completionHandler(typingUsers)
+            
+            
+        }
+        
+        
+    }
     
     
     

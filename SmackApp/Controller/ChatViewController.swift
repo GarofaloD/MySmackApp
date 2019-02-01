@@ -16,6 +16,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var messageTextBox: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var typingUsersNotificationLbl: UILabel!
+    
+    
     
     //MARK:- Properties
     var isTyping = false
@@ -52,6 +55,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
+        
         //Socket call to update table view automatically with each message sent
         SocketService.instance.getChatMessage { (success) in
             if success {
@@ -66,6 +70,44 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
+        //Socket call to check who is typing
+        SocketService.instance.getTypingUsers { (typingUsers) in
+            
+            //Check that everyone is on the same channel
+            guard let channelId = MessageService.instance.selectedChannel?.id else {return}
+            var names = "" //This is the var that wil hold the name of the user typing
+            var numbersOfTypers = 0
+            
+            //Checking for the user ad the channel on the array
+            for (typingUser, channel) in typingUsers {
+                //making sure that he typer is not ourselves on the channel that we are currently located...
+                if typingUser != UserDataService.instance.name && channel == channelId {
+                    //And if this is the first typer on the channel...
+                    if names == "" {
+                        names = typingUser
+                    } else {
+                        //otherwise, we have to add the past typerr and the current typer
+                        names = "\(names), \(typingUser)"
+                        numbersOfTypers += 1
+                    }
+                }
+            }
+            
+            //Verb to be displayed on the labelIf there have been typer and we are logged in
+            if numbersOfTypers > 0 && AuthService.instance.isLoggedIn == true {
+                
+                var verb = "is"
+                
+                if numbersOfTypers > 1{
+                    verb = "are"
+                }
+                self.typingUsersNotificationLbl.text = "\(names) \(verb) typing..."
+            } else {
+                self.typingUsersNotificationLbl.text  = ""
+            }
+        }
+        
+
         
         //Tableview load up
         tableView.delegate = self
@@ -107,46 +149,41 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Only send messages if logged in
         if AuthService.instance.isLoggedIn{
             
+            //Check for the channel and the message on the fiekd
             guard let channelId = MessageService.instance.selectedChannel?.id else {return}
             guard let message = messageTextBox.text else {return}
             
+            //Pass values required by API
             SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId) { (success) in
-                
+                //Once succeeded: clear the box, hide the keyboard and send message to the api that marks end of typing
                 if success {
                     self.messageTextBox.text = ""
                     self.messageTextBox.resignFirstResponder()
-                    
-                    
-                } else {
-                    
+                    SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId) //As required by the API
                 }
-                
             }
-            
         }
     }
+    
     
     //Hide send button if there is no text or there is no typing on the message field
     @IBAction func messageBoxEditing(_ sender: UITextField) {
         
+        //Necessary to get the id of the channel
+        guard let channelId = MessageService.instance.selectedChannel?.id else {return}
+        
         if messageTextBox.text == "" {
             isTyping = false
             sendButton.isHidden = true
+            SocketService.instance.socket.emit("stopType", UserDataService.instance.name, channelId) //As required by the API
         } else {
             if isTyping == false {
                 sendButton.isHidden = false
+                SocketService.instance.socket.emit("startType", UserDataService.instance.name, channelId)
             }
             isTyping = true
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
 
     //MARK:- Custom Functions

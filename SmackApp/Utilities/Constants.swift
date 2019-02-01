@@ -11,6 +11,8 @@ import Foundation
 //Completion Handler
 typealias CompletionHandler = (_ Success: Bool) -> () //Closure to determine if call passed or not
 
+
+
 //URLS
 let BASE_URL = "https://smackappdaniel.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)/account/register"
