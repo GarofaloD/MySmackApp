@@ -48,7 +48,7 @@ class SocketService: NSObject {
         
     }
     
-    //.ON to receive channels from teh server
+    //.ON to receive channels from the server
     func getChannel(completion: @escaping CompletionHandler){
         //Declaration of the .On,
         //We need to receive an array of data that will come with three pieces of info for each channel: Name, Description and ID. We also need to check the acknowledgement
@@ -70,7 +70,7 @@ class SocketService: NSObject {
     //Adding / sending the message
     func addMessage(messageBody: String, userId: String, channelId: String, completion: @escaping CompletionHandler ){
         
-        //Connection to the insstance so we dont have to ty ethe whole thing every time
+        //Connection to the instance so we dont have to ty ethe whole thing every time
         let user = UserDataService.instance
         
         socket.emit("newMessage", messageBody, userId, channelId, user.name, user.avatarName, user.avatarColor)
@@ -78,8 +78,9 @@ class SocketService: NSObject {
     }
     
     
-    //.ON to receive messages from teh server
-    func getChatMessage(completion: @escaping CompletionHandler){
+    //.ON to receive messages from the server
+    //In this case, the completion handler is looking for a message. Which means that a successful connection proof is to get a new message
+    func getChatMessage(completion: @escaping (_ newMessage: Message) -> Void){
         //Declaration of the .On,
         //We need to receive an array of data that will come with several pieces of info for each message. We also need to check the acknowledgement of receival
         socket.on("messageCreated") { (dataArray, ack) in //"messageCreated" is the name of the event according tothe api
@@ -93,33 +94,25 @@ class SocketService: NSObject {
             guard let id = dataArray[6] as? String else {return}
             guard let timeStamp = dataArray[7] as? String else {return}
             
-            //As long as the id on channel id matches an existing channel and the user is logged in..
-            if channelId == MessageService.instance.selectedChannel?.id && AuthService.instance.isLoggedIn{
-                //...there will be creation of a new message, appending on the array of messages and check for completion
-                let newMessage = Message(message: msgBody, userName: userName, channelID: channelId, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timeStamp: timeStamp)
-                MessageService.instance.messages.append(newMessage)
-                completion(true)
-            } else {
-                completion(false)
-                
-            }
+            //Creating a new Message object
+            let newMessage = Message(message: msgBody, userName: userName, channelID: channelId, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timeStamp: timeStamp)
+            
+            //And acknowledging the completion with the new message
+            completion(newMessage)
         }
     }
     
+    
     //MARK:- Typing users
-    //The completion handler looks for a dictionary
+    //The completion handler looks for a dictionary where we are looking for a dictionary (typing user: channel)
     func getTypingUsers(_ completionHandler: @escaping (_ typingUsers: [String: String]) -> Void) {
-        
+        //Listening for the user typing
         socket.on("userTypingUpdate") { (dataArray, ack) in
-            
+            //Parsing the data from the respondin array
             guard let typingUsers = dataArray[0] as? [String:String] else {return}
-            
+            //Acknowledging the completion
             completionHandler(typingUsers)
-            
-            
         }
-        
-        
     }
     
     

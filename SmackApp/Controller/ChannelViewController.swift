@@ -11,22 +11,11 @@ import UIKit
 class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
-
     //MARK:- Outlets
-    
     @IBOutlet weak var userImage: CircleImage!
     @IBOutlet weak var loginButton: UIButton!
     @IBAction func prepareForUnwind(segue:UIStoryboardSegue){} //This IBAction is for the unwind from the "Create Account VC"
-    
     @IBOutlet weak var tableView: UITableView!
-    
-    
-    
-    //MARK:- Properties
-    
-    
-    
-    
     
     
     
@@ -49,17 +38,27 @@ class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //Selection of row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Select a channel and notify ChatVC that a channel has been selected, passing the value of the channel
+        //Make the channel you clicked on the selected channel, passing the value of the channel
         let channel = MessageService.instance.channels[indexPath.row]
         MessageService.instance.selectedChannel = channel
+        
+        //If there are unread channels, eliminate the selected channel from that array
+        if MessageService.instance.unreadChannels.count > 0 {
+            MessageService.instance.unreadChannels = MessageService.instance.unreadChannels.filter{$0 != channel.id}
+        }
+        
+        //Then, we need to relaod the visuals for that particular row only
+        let index = IndexPath(row: indexPath.row, section: 0)
+        tableView.reloadRows(at: [index], with: .none)
+        tableView.selectRow(at: index, animated: false, scrollPosition: .none)
+        
+        
+        //And notify ChatVC that a channel has been selected
         NotificationCenter.default.post(name: NOTIF_CHANNELS_SELECTED, object: nil)
         
         //Once selected, toggle this VC back and revea ChatVC
         self.revealViewController()?.revealToggle(animated: true)
     }
-    
-    
-    
     
     
     //MARK:- Load up functions
@@ -82,6 +81,16 @@ class ChannelViewController: UIViewController, UITableViewDelegate, UITableViewD
         //Checking for new channels
         SocketService.instance.getChannel { (success) in
             if success {
+                self.tableView.reloadData()
+            }
+        }
+        
+        //Check for new messages
+        SocketService.instance.getChatMessage { (newMessage) in
+            //In this case we are interested in knowing about messages that are not from the channel that we are currenty on so we can generate an alert
+            if newMessage.channelID != MessageService.instance.selectedChannel?.id && AuthService.instance.isLoggedIn {
+                //Then add thhe channel ID to that array and reload the table
+                MessageService.instance.unreadChannels.append(newMessage.channelID)
                 self.tableView.reloadData()
             }
         }

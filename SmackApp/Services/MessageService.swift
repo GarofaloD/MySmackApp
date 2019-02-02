@@ -16,9 +16,10 @@ class MessageService {
     static let instance = MessageService()
     
     //MARK: Properties
-    var channels = [Channel]()
-    var messages = [Message]()
-    var selectedChannel : Channel?
+    var channels = [Channel]() //For all channels
+    var messages = [Message]() //For all messages
+    var unreadChannels = [String]() //For the channelIDs from the unread messages. Check SocketService.instance.getChatMessage on ChannelVC
+    var selectedChannel : Channel? //For all channels
     
     //MARK:- Channel requests in / out
     //Network request to get channels
@@ -70,8 +71,8 @@ class MessageService {
                 //clear all messages so new messages from a different channel can be loaded into the same array
                 self.clearMessages()
                 
+                //Get the fdata and parse through the data
                 guard let data = response.data else {return}
-                
                 if let json = JSON(data: data).array {
                     for item in json{
                         let messageBody = item["messageBody"].stringValue
@@ -82,6 +83,7 @@ class MessageService {
                         let userAvatarColor = item["userAvatarColor"].stringValue
                         let timeStamp = item["timeStamp"].stringValue
                         
+                        //Create a new Message object and add it to the message array
                         let message = Message(message: messageBody, userName: userName, channelID: channelID, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timeStamp: timeStamp)
                         self.messages.append(message)
                     }
@@ -89,7 +91,6 @@ class MessageService {
                 print(self.messages)
                 completion(true)
             } else {
-                
                 debugPrint(response.result.error as Any)
                 completion(false)
             }

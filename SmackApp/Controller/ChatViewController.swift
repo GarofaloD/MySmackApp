@@ -55,20 +55,39 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
-        
-        //Socket call to update table view automatically with each message sent
-        SocketService.instance.getChatMessage { (success) in
-            if success {
+        //Socket call to update table view automatically with each message sent and looking for a new message
+        SocketService.instance.getChatMessage { (newMessage) in
+            //If the channel of the new message belongs to the selected channel and we are logged in, append the message to the array of messages and refresh the table
+            if newMessage.channelID == MessageService.instance.selectedChannel?.id && AuthService.instance.isLoggedIn {
+                MessageService.instance.messages.append(newMessage)
                 self.tableView.reloadData()
-                //If there is more than one message on the array
+                
+                //And check for the number of message son the array so the table can be scrolled to the bottom with the latest message
                 if MessageService.instance.messages.count > 0 {
-                    //Create an element that will be set to the last object on the array...
                     let endIndex = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
-                    //... and scroll to it on the bottom of the table
                     self.tableView.scrollToRow(at: endIndex, at: .bottom, animated: false)
+                    
+                    
+                    
                 }
             }
         }
+        
+        
+        
+        //Socket call to update table view automatically with each message sent
+//        SocketService.instance.getChatMessage { (success) in
+//            if success {
+//                self.tableView.reloadData()
+//                //If there is more than one message on the array
+//                if MessageService.instance.messages.count > 0 {
+//                    //Create an element that will be set to the last object on the array...
+//                    let endIndex = IndexPath(row: MessageService.instance.messages.count - 1, section: 0)
+//                    //... and scroll to it on the bottom of the table
+//                    self.tableView.scrollToRow(at: endIndex, at: .bottom, animated: false)
+//                }
+//            }
+//        }
         
         //Socket call to check who is typing
         SocketService.instance.getTypingUsers { (typingUsers) in

@@ -34,11 +34,20 @@ class ChannelCell: UITableViewCell {
         }
     }
     
-    //Display title of the channel on the outlet
+    //Display title of the channel on the outlet and change the forn font on the channels tha have unread messages
     func configureCell(channel: Channel){
         //nil coalescing = If there is no title name, set the text as blank
         let title = channel.channelTitle ?? ""
         channelName.text = "#\(title)"
+        channelName.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
+        
+        //parse through the unread channels array to find an unread channel..
+        for id in MessageService.instance.unreadChannels {
+            //.. by comparing the id of the channel we are passing into this function with the channelid on the array and if it is the same...
+            if id == channel.id {
+                channelName.font = UIFont(name: "HelveticaNeue-Bold", size: 22)
+            }
+        }
     }
     
     
